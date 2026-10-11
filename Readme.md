@@ -30,3 +30,18 @@ database backups, AWS keys, and generated files.
 
 Existing database records and uploaded documents must be
 transferred separately when moving to another laptop.
+
+## Clone on another laptop
+
+With Git installed, run these commands in PowerShell:
+
+```powershell
+git clone https://github.com/Vikram149/Rag_chatbot.git
+cd Rag_chatbot
+Copy-Item .env.example .env
+```
+
+Edit `.env` with your API key and database settings, then follow
+the Docker setup instructions above.
+
+Transfer your existing database records and uploaded documents separately.
