@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document RAG | Login</title>
+    <link rel="stylesheet" href="/static/auth.css">
+</head>
+<body>
+    <main class="login-page">
+        <a class="brand-logo" href="/login" aria-label="Document RAG login">R</a>
+
+        <div class="web web-large" aria-hidden="true"></div>
+        <div class="web web-corner" aria-hidden="true"></div>
+        <div class="red-glow" aria-hidden="true"></div>
+
+        <div class="silk-drop" aria-hidden="true">
+            <div class="silk-thread"></div>
+            <div class="spider">
+                <span class="leg leg-left-one"></span>
+                <span class="leg leg-left-two"></span>
+                <span class="leg leg-left-three"></span>
+                <span class="leg leg-left-four"></span>
+                <span class="leg leg-right-one"></span>
+                <span class="leg leg-right-two"></span>
+                <span class="leg leg-right-three"></span>
+                <span class="leg leg-right-four"></span>
+                <span class="spider-head">
+                    <i class="eye eye-left"></i>
+                    <i class="eye eye-right"></i>
+                </span>
+                <span class="spider-body"></span>
+                <span class="spider-mark"></span>
+            </div>
+        </div>
+
+        <section class="credentials-area" id="credentialsArea">
+            <div class="auth-glass">
+                <div class="auth-tabs" role="tablist" aria-label="Account access">
+                    <button class="auth-tab active" type="button" role="tab"
+                            aria-selected="true" data-auth-view="login">
+                        Sign in
+                    </button>
+                    <button class="auth-tab" type="button" role="tab"
+                            aria-selected="false" data-auth-view="register">
+                        Create account
+                    </button>
+                </div>
+
+                <form class="auth-form active" id="loginForm" autocomplete="off">
+                    <div class="form-heading">
+                        <p>WELCOME</p>
+                        <h1>Enter your workspace</h1>
+                    </div>
+
+                    <div class="field-row">
+                        <label class="auth-field">
+                            <span>Username</span>
+                            <input type="text" name="username" placeholder="Enter username"
+                                   autocomplete="off" autocapitalize="none" spellcheck="false"
+                                   data-lpignore="true" required>
+                        </label>
+
+                        <label class="auth-field">
+                            <span>Password</span>
+                            <span class="password-wrap">
+                                <input class="spider-password" type="password" name="password" placeholder="Enter password"
+                                       placeholder="Enter password" autocomplete="new-password"
+                                       data-lpignore="true" required>
+                                <span class="spider-mask" aria-hidden="true"></span>
+                                <button class="password-toggle" type="button"
+                                        aria-label="Show password">
+                                    <svg class="password-eye-svg" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </span>
+                        </label>
+
+                        <button class="submit-button" type="submit">Sign in</button>
+                    </div>
+
+                    <div class="secure-login-row">
+                        <label class="secure-login-option">
+                            <input
+                                class="secure-login-checkbox"
+                                type="checkbox"
+                                name="remember"
+                            >
+
+                            <span class="secure-spider-box" aria-hidden="true">
+                                <span class="secure-spider">🕷</span>
+                            </span>
+
+                            <span class="secure-login-label">
+                                Secure login
+                            </span>
+                        </label>
+                    </div>
+                </form>
+
+                <form class="auth-form" id="registerForm" autocomplete="off" hidden>
+                    <div class="form-heading">
+                        <p>NEW WORKSPACE</p>
+                        <h1>Create your account</h1>
+                    </div>
+
+                    <div class="field-row register-row">
+                        <label class="auth-field">
+                            <span>Username</span>
+                            <input type="text" name="username" placeholder="Choose username"
+                                   autocomplete="off" autocapitalize="none" spellcheck="false"
+                                   minlength="3" maxlength="50" data-lpignore="true" required>
+                        </label>
+
+                        <label class="auth-field">
+                            <span>Password</span>
+                            <span class="password-wrap">
+                                <input class="spider-password" type="password" name="password"
+                                       placeholder="Create password" autocomplete="new-password"
+                                       minlength="8" maxlength="128" data-lpignore="true" required>
+                                <span class="spider-mask" aria-hidden="true"></span>
+                                <button class="password-toggle" type="button"
+                                        aria-label="Show password">
+                                    <svg class="password-eye-svg" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </span>
+                        </label>
+
+                        <label class="auth-field">
+                            <span>Confirm password</span>
+                            <span class="password-wrap">
+                                <input class="spider-password" type="password" name="confirm_password"
+                                       placeholder="Repeat password" autocomplete="new-password"
+                                       minlength="8" maxlength="128" data-lpignore="true" required>
+                                <span class="spider-mask" aria-hidden="true"></span>
+                                <button class="password-toggle" type="button"
+                                        aria-label="Show password">
+                                    <svg class="password-eye-svg" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </span>
+                        </label>
+
+                        <button class="submit-button" type="submit">Create account</button>
+                    </div>
+                </form>
+
+                <p class="auth-message" id="authMessage" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/auth.js" defer></script>
+</body>
+</html>

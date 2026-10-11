@@ -1,0 +1,32 @@
+# Secrets
+.env
+.env.*
+
+# Python environment and cache
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Existing local data
+data/
+backups/
+evaluation/
+scripts/
+
+# Version control and editors
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Backups and archives
+*.backup
+*.zip
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

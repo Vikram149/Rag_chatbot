@@ -1,0 +1,300 @@
+[
+  {
+    "id": 1,
+    "question": "What is the primary purpose of multithreading?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["parallel", "concurrent"],
+      ["multiple threads", "threads"]
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What are the two types of multitasking described in the document?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["process-based", "process based"],
+      ["thread-based", "thread based"]
+    ]
+  },
+  {
+    "id": 3,
+    "question": "How does memory usage differ between process-based and thread-based applications?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["separate memory", "separate memory space"],
+      ["single address space", "sub-memory spaces", "sub memory spaces"],
+      ["more memory", "less memory"]
+    ]
+  },
+  {
+    "id": 4,
+    "question": "How does the document define a thread?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["lightweight", "light-weight"],
+      ["flow of control"],
+      ["java.lang", "java lang"]
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What happens when start() is called on a newly created thread?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["new state", "born state", "new (or born) state",
+        "new or born state"],
+      ["ready state"],
+      ["run method", "run()"]
+    ]
+  },
+  {
+    "id": 6,
+    "question": "How do wait() and sleep() affect a running thread?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["waiting state"],
+      ["notify"],
+      ["sleep time", "completion of sleep time", "time is over"]
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What is the purpose of the join() method?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["remaining threads", "other threads"],
+      ["waiting state", "wait"],
+      ["completion", "execution is over", "finishes"]
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What are the maximum, minimum, and normal thread priority values?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["10"],
+      ["1"],
+      ["5"]
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Which four Thread constructors are listed in the document?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["Thread()", "thread without", "without providing any name"],
+      ["Thread(String)", "providing a respective name"],
+      ["Thread(Runnable)", "runnable interface"],
+      ["Thread(Runnable, String)", "runnable and name", "provide the name"]
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What do setName() and getName() do?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["user-friendly name", "provide a name", "set the name"],
+      ["return", "get the name"]
+    ]
+  },
+  {
+    "id": 11,
+    "question": "What are the four ways listed for creating a thread class object?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["new keyword"],
+      ["factory method"],
+      ["thread class", "extends Thread"],
+      ["runnable interface", "implements Runnable"]
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Why should start() be called instead of calling run() directly?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["start", "start()"],
+      ["run method", "run()"],
+      ["multithreading", "multi-threading", "threading services"],
+      ["synchronization", "concurrency", "inter-thread communication"]
+    ]
+  },
+  {
+    "id": 13,
+    "question": "What parameter does sleep() accept and which exception can it raise?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["milliseconds", "long milliseconds"],
+      ["InterruptedException", "interrupted exception"]
+    ]
+  },
+  {
+    "id": 14,
+    "question": "When does isAlive() return true and when does it return false?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["ready", "running", "waiting"],
+      ["new", "dead"],
+      ["true"],
+      ["false"]
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Why is synchronization used when multiple threads access the same resource?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["inconsistent result", "inconsistent results"],
+      ["thread-by-thread", "thread by thread", "one thread at a time"],
+      ["locking", "lock"]
+    ]
+  },
+  {
+    "id": 16,
+    "question": "When should synchronized be applied at method level and block level?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["all the lines", "entire method", "method level"],
+      ["particular line", "specific section", "block level"]
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What are the two types of locking described for synchronization?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["class level locking", "class-level locking", "static synchronization"],
+      ["object level locking", "object-level locking"]
+    ]
+  },
+  {
+    "id": 18,
+    "question": "In the synchronization example, what is the final balance after deposits of 2000 and 3000 rupees?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["5000", "5,000"]
+    ]
+  },
+  {
+    "id": 19,
+    "question": "Which concepts are required for inter-thread communication according to the document?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["synchronization"],
+      ["wait method", "wait()"],
+      ["notify method", "notify()"]
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What is a thread pool and what happens to a thread after completing its job?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["container"],
+      ["predefined threads", "user-defined threads", "user defined threads"],
+      ["thread pool again", "returned to the thread pool", "contained in the thread pool"]
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What are the two scheduling approaches used by the thread scheduler?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["preemptive scheduling"],
+      ["time slicing", "time-slicing"]
+    ]
+  },
+  {
+    "id": 22,
+    "question": "What is a daemon thread and when does the JVM terminate it?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["service provider thread", "provides services"],
+      ["user threads die", "all user threads", "user threads finish"],
+      ["JVM", "terminates"]
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What is a deadlock in multithreading?",
+    "question_type": "answerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": [
+      ["two threads", "threads"],
+      ["waiting for each other"],
+      ["forever", "stuck", "cannot come out"]
+    ]
+  },
+  {
+    "id": 24,
+    "question": "What is Python's Global Interpreter Lock and how does it affect CPU-bound threads?",
+    "question_type": "unanswerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": []
+  },
+  {
+    "id": 25,
+    "question": "How does Java CompletableFuture manage asynchronous operations?",
+    "question_type": "unanswerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": []
+  },
+  {
+    "id": 26,
+    "question": "What are virtual threads in modern Java?",
+    "question_type": "unanswerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": []
+  },
+  {
+    "id": 27,
+    "question": "What is the capital of France?",
+    "question_type": "unanswerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": []
+  },
+  {
+    "id": 28,
+    "question": "How does photosynthesis convert sunlight into chemical energy?",
+    "question_type": "unanswerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": []
+  },
+  {
+    "id": 29,
+    "question": "How does a SQL LEFT JOIN work?",
+    "question_type": "unanswerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": []
+  },
+  {
+    "id": 30,
+    "question": "What does the HTTP 404 status code mean?",
+    "question_type": "unanswerable",
+    "document_filename": "Multi -Threading.pdf",
+    "required_keyword_groups": []
+  }
+]

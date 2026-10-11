@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Document RAG</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/styles.css"
+    >
+</head>
+
+<body>
+
+<div class="application-shell">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="brand">
+                <div class="brand-icon">R</div>
+
+                <div>
+                    <div class="brand-name">
+                        
+                        <span id="sidebar-username">User</span>
+                    </div>
+
+                    <div class="brand-caption">
+                        RAG Knowledge Assistant
+                    </div>
+                </div>
+            </div>
+
+            <button
+                class="mobile-close-button"
+                id="close-sidebar-button"
+                type="button"
+                aria-label="Close sidebar"
+            >
+                ×
+            </button>
+            <button
+                class="sidebar-collapse-button"
+                id="collapse-sidebar-button"
+                type="button"
+                aria-label="Collapse sidebar"
+                title="Collapse sidebar"
+            >
+                ‹
+            </button>
+        </div>
+
+        <button
+            class="new-chat-button"
+            id="new-chat-button"
+            type="button"
+        >
+            <span class="button-icon">＋</span>
+            New chat
+        </button>
+
+        <nav class="main-navigation">
+
+            <div class="navigation-label">
+                Workspace
+            </div>
+
+            <button
+                class="navigation-item active"
+                data-view="chat"
+                type="button"
+            >
+                <span class="navigation-icon">◇</span>
+                <span>Chat</span>
+            </button>
+
+            <button
+                class="navigation-item"
+                data-view="upload"
+                type="button"
+            >
+                <span class="navigation-icon">↑</span>
+                <span>Upload document</span>
+            </button>
+
+            <button
+                class="navigation-item"
+                data-view="documents"
+                type="button"
+            >
+                <span class="navigation-icon">▤</span>
+                <span>Documents</span>
+            </button>
+
+            <button
+                class="navigation-item"
+                data-view="analytics"
+                type="button"
+            >
+                <span class="navigation-icon">⌁</span>
+                <span>Retrieval analytics</span>
+            </button>
+
+        </nav>
+
+        <section class="chat-history-section">
+
+            <div class="history-header">
+                <span>Recent chats</span>
+            </div>
+
+            <label class="chat-search-field">
+                <span
+                    class="chat-search-icon"
+                    aria-hidden="true"
+                >
+                    ⌕
+                </span>
+
+                <input
+                    id="chat-search-input"
+                    type="search"
+                    placeholder="Search chat titles"
+                    aria-label="Search chat titles"
+                    autocomplete="off"
+                >
+            </label>
+
+            <div
+                class="chat-history-list"
+                id="chat-history-list"
+            >
+                <div class="sidebar-empty-message">
+                    No chats yet
+                </div>
+            </div>
+
+        </section>
+
+        <div class="sidebar-footer">
+                <button
+                    class="theme-toggle-button"
+                    id="theme-toggle-button"
+                    type="button"
+                    aria-label="Change color theme"
+                >
+                    <span id="theme-toggle-icon">☾</span>
+                    <span id="theme-toggle-label">Dark mode</span>
+                </button>
+                <button
+    class="logout-button"
+    id="logoutButton"
+    type="button"
+>
+    <span>↪</span>
+    Logout
+</button>
+        </div>
+
+    </aside>
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+        <button
+            class="sidebar-expand-button"
+            id="expand-sidebar-button"
+            type="button"
+            aria-label="Expand sidebar"
+            title="Expand sidebar"
+        >
+            ☰
+        </button>
+
+        <header class="mobile-header">
+
+            <button
+                class="mobile-menu-button"
+                id="open-sidebar-button"
+                type="button"
+                aria-label="Open sidebar"
+            >
+                ☰
+            </button>
+
+            <span>Document RAG</span>
+
+        </header>
+
+        <!-- ======================================
+             CHAT VIEW
+        ======================================= -->
+
+        <section
+            class="application-view active"
+            id="chat-view"
+        >
+
+            <header class="view-header">
+
+                <div>
+                    <p class="eyebrow">
+                        DOCUMENT CHAT
+                    </p>
+
+                    <h1 id="current-chat-title">
+                        New chat
+                    </h1>
+
+                    <p class="view-description">
+                        Ask questions grounded in your uploaded documents.
+                    </p>
+                </div>
+
+                
+<div class="chat-header-actions">
+    <button
+        class="secondary-button"
+        id="export-text-button"
+        type="button"
+    >
+        Export TXT
+    </button>
+
+    <button
+        class="secondary-button"
+        id="export-pdf-button"
+        type="button"
+    >
+        Export PDF
+    </button>
+
+    <button
+        class="secondary-button"
+        id="select-documents-button"
+        type="button"
+    >
+        Select documents
+    </button>
+</div>
+            </header>
+
+            <div
+                class="selected-documents-summary"
+                id="selected-documents-summary"
+            >
+                Searching all ready documents
+            </div>
+
+            <div
+                class="chat-messages"
+                id="chat-messages"
+            >
+
+                <div
+                    class="chat-empty-state"
+                    id="chat-empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        R
+                    </div>
+
+                    <h2>
+                        Ask your documents
+                    </h2>
+
+                    <p>
+                        Upload learning material and ask questions.
+                        Answers will include document and page sources.
+                    </p>
+
+                    <div class="suggestion-list">
+
+                        <button
+                            class="suggestion-button"
+                            type="button"
+                        >
+                            Summarize the main topics
+                        </button>
+
+                        <button
+                            class="suggestion-button"
+                            type="button"
+                        >
+                            Explain the Pythagorean theorem
+                        </button>
+
+                        <button
+                            class="suggestion-button"
+                            type="button"
+                        >
+                            Create practice questions
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="chat-composer-container">
+
+                <form
+                    class="chat-composer"
+                    id="chat-form"
+                >
+
+                    <textarea
+                        id="chat-input"
+                        rows="1"
+                        maxlength="4000"
+                        placeholder="Ask a question about your documents..."
+                        aria-label="Chat message"
+                    ></textarea>
+                    <button
+                        class="stop-button hidden"
+                        id="stop-button"
+                        type="button"
+                        aria-label="Stop generating"
+                        title="Stop generating"
+                    >
+                        ■
+                    </button>
+
+                    <button
+                        class="send-button"
+                        id="send-button"
+                        type="submit"
+                        aria-label="Send message"
+                    >
+                        ↑
+                    </button>
+
+                </form>
+
+                <p class="composer-caption">
+                    Answers are generated from your selected documents.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================
+             UPLOAD VIEW
+        ======================================= -->
+
+        <section
+            class="application-view"
+            id="upload-view"
+        >
+
+            <header class="view-header">
+
+                <div>
+                    <p class="eyebrow">
+                        KNOWLEDGE BASE
+                    </p>
+
+                    <h1>
+                        Upload documents
+                    </h1>
+
+                    <p class="view-description">
+                        Add documents that the chatbot can search and reference.
+                    </p>
+                </div>
+
+            </header>
+
+            <div class="upload-panel">
+
+                <input
+                    id="file-input"
+                    type="file"
+                    accept=".docx,.pdf,.txt"
+                    multiple
+                    hidden
+                >
+
+                <button
+                    class="upload-drop-zone"
+                    id="upload-drop-zone"
+                    type="button"
+                >
+
+                    <span class="upload-icon">↑</span>
+
+                    <strong>
+                        Click to choose files or drag and drop
+                    </strong>
+
+                    <span>
+                        DOCX, PDF or TXT · maximum 20 MB each
+                    </span>
+
+                    <span class="upload-badge">
+                        Multiple files supported
+                    </span>
+
+                </button>
+
+            </div>
+
+            <div
+                class="upload-queue"
+                id="upload-queue"
+            ></div>
+
+        </section>
+
+        <!-- ======================================
+             DOCUMENTS VIEW
+        ======================================= -->
+
+        <section
+            class="application-view"
+            id="documents-view"
+        >
+
+            <header class="view-header">
+
+                <div>
+                    <p class="eyebrow">
+                        KNOWLEDGE BASE
+                    </p>
+
+                    <h1>
+                        Documents
+                    </h1>
+
+                    <p class="view-description">
+                        View and manage the documents available to your chatbot.
+                    </p>
+                </div>
+
+                <button
+                    class="primary-button"
+                    id="documents-upload-button"
+                    type="button"
+                >
+                    ↑ Upload
+                </button>
+
+            </header>
+
+            <div class="statistics-grid">
+
+                <article class="statistic-card">
+                    <span>Total uploaded</span>
+                    <strong id="total-documents-stat">0</strong>
+                </article>
+
+                <article class="statistic-card">
+                    <span>Ready</span>
+                    <strong id="ready-documents-stat">0</strong>
+                </article>
+
+                <article class="statistic-card">
+                    <span>Processing</span>
+                    <strong id="processing-documents-stat">0</strong>
+                </article>
+
+                <article class="statistic-card">
+                    <span>Failed</span>
+                    <strong id="failed-documents-stat">0</strong>
+                </article>
+
+                <article class="statistic-card">
+                    <span>Total chunks</span>
+                    <strong id="total-chunks-stat">0</strong>
+                </article>
+
+            </div>
+
+            <div class="documents-toolbar">
+
+                <label class="search-field">
+                    <span>⌕</span>
+
+                    <input
+                        id="document-search-input"
+                        type="search"
+                        placeholder="Search filename"
+                    >
+                </label>
+
+                <button
+                    class="secondary-button"
+                    id="refresh-documents-button"
+                    type="button"
+                >
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+            <div class="documents-table-container">
+
+                <table class="documents-table">
+
+                    <thead>
+                    <tr>
+                        <th>Filename</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Chunks</th>
+                        <th>Size</th>
+                        <th>Uploaded</th>
+                        <th class="actions-column">
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="documents-table-body">
+
+                    <tr>
+                        <td
+                            colspan="7"
+                            class="table-empty-message"
+                        >
+                            No documents uploaded
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================
+             RETRIEVAL ANALYTICS VIEW
+        ======================================= -->
+
+        <section
+            class="application-view"
+            id="analytics-view"
+        >
+            <header class="view-header">
+                <div>
+                    <p class="eyebrow">
+                        RAG OBSERVABILITY
+                    </p>
+
+                    <h1>Retrieval analytics</h1>
+
+                    <p class="view-description">
+                        Inspect how document chunks are selected for each answer.
+                    </p>
+                </div>
+
+                <button
+                    class="secondary-button"
+                    id="refresh-analytics-button"
+                    type="button"
+                >
+                    ↻ Refresh
+                </button>
+            </header>
+
+            <div class="statistics-grid analytics-statistics-grid">
+                <article class="statistic-card">
+                    <span>Total runs</span>
+                    <strong id="analytics-total-runs">0</strong>
+                </article>
+
+                <article class="statistic-card">
+                    <span>Chunks supplied</span>
+                    <strong id="analytics-total-chunks">0</strong>
+                </article>
+
+                <article class="statistic-card">
+                    <span>Average chunks</span>
+                    <strong id="analytics-average-chunks">0</strong>
+                </article>
+
+                <article class="statistic-card">
+                    <span>Average similarity</span>
+                    <strong id="analytics-average-similarity">0</strong>
+                </article>
+
+                <article class="statistic-card">
+                    <span>Claude calls</span>
+                    <strong id="analytics-claude-calls">0</strong>
+                </article>
+            </div>
+
+            <div class="analytics-toolbar">
+                <label class="search-field">
+                    <span>⌕</span>
+
+                    <input
+                        id="analytics-search-input"
+                        type="search"
+                        placeholder="Search question or chat title"
+                    >
+                </label>
+
+                <span class="analytics-privacy-note">
+                    Showing only your retrieval activity
+                </span>
+            </div>
+
+            <div class="analytics-table-container">
+                <table class="analytics-table">
+                    <thead>
+                    <tr>
+                        <th>Run</th>
+                        <th>Chat</th>
+                        <th>Question</th>
+                        <th>Candidates</th>
+                        <th>Context</th>
+                        <th>Similarity</th>
+                        <th>Claude</th>
+                        <th>Retrieved</th>
+                        <th>Details</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="analytics-runs-table-body">
+                    <tr>
+                        <td
+                            colspan="9"
+                            class="table-empty-message"
+                        >
+                            No retrieval runs yet
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <section
+                class="retrieval-details-panel hidden"
+                id="retrieval-details-panel"
+            >
+                <header class="retrieval-details-header">
+                    <div>
+                        <p class="eyebrow">
+                            RETRIEVAL RUN
+                        </p>
+
+                        <h2 id="retrieval-details-title">
+                            Run details
+                        </h2>
+                    </div>
+
+                    <button
+                        class="preview-close-button"
+                        id="close-retrieval-details-button"
+                        type="button"
+                        aria-label="Close retrieval details"
+                    >
+                        ×
+                    </button>
+                </header>
+
+                <div
+                    class="retrieval-run-summary"
+                    id="retrieval-run-summary"
+                ></div>
+
+                <div
+                    class="retrieval-chunks-list"
+                    id="retrieval-chunks-list"
+                ></div>
+            </section>
+        </section>
+
+    </main>
+
+    <aside
+    class="document-preview-panel"
+    id="document-preview-panel"
+    aria-hidden="true"
+>
+    <header class="document-preview-header">
+        <input
+            id="replace-document-input"
+            type="file"
+            accept=".pdf,.docx,.txt"
+            hidden
+        >
+        <div>
+            <p class="eyebrow">DOCUMENT PREVIEW</p>
+            <h2 id="document-preview-title">Preview</h2>
+        </div>
+
+        <div class="document-preview-actions">
+            <button
+                class="secondary-button"
+                id="open-preview-tab-button"
+                type="button"
+                title="Open in new tab"
+            >
+                ↗
+            </button>
+
+            <button
+                class="preview-close-button"
+                id="close-preview-button"
+                type="button"
+                aria-label="Close preview"
+            >
+                ×
+            </button>
+        </div>
+    </header>
+
+    <iframe
+        id="document-preview-frame"
+        title="Document preview"
+    ></iframe>
+</aside>
+
+</div>
+
+<!-- ==============================================
+     DOCUMENT SELECTION MODAL
+=============================================== -->
+
+<div
+    class="modal-backdrop hidden"
+    id="document-selection-modal"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="document-selection-title"
+    >
+
+        <div class="modal-header">
+
+            <div>
+                <h2 id="document-selection-title">
+                    Select documents
+                </h2>
+
+                <p>
+                    Choose which documents this chat can search.
+                </p>
+            </div>
+
+            <button
+                class="modal-close-button"
+                id="close-document-modal-button"
+                type="button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            class="document-selection-list"
+            id="document-selection-list"
+        ></div>
+
+        <div class="modal-footer">
+
+            <button
+                class="secondary-button"
+                id="select-all-documents-button"
+                type="button"
+            >
+                Select all
+            </button>
+
+            <button
+                class="primary-button"
+                id="save-document-selection-button"
+                type="button"
+            >
+                Save selection
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==============================================
+     DELETE CONFIRMATION MODAL
+=============================================== -->
+
+<div
+    class="modal-backdrop hidden"
+    id="confirmation-modal"
+>
+
+    <div
+        class="modal confirmation-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirmation-title"
+    >
+
+        <div class="confirmation-icon">
+            !
+        </div>
+
+        <h2 id="confirmation-title">
+            Confirm deletion
+        </h2>
+
+        <p id="confirmation-message">
+            Are you sure you want to delete this item?
+        </p>
+
+        <div class="confirmation-actions">
+
+            <button
+                class="secondary-button"
+                id="cancel-confirmation-button"
+                type="button"
+            >
+                Cancel
+            </button>
+            <button
+                class="danger-button"
+                id="confirm-delete-button"
+                type="button"
+            >
+                Delete
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==============================================
+     RENAME CHAT MODAL
+=============================================== -->
+
+<div
+    id="rename-chat-modal"
+    class="modal-overlay hidden"
+>
+
+    <div
+        class="rename-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="rename-chat-title"
+    >
+
+        <div class="rename-modal-header">
+
+            <div class="rename-icon">
+                ✎
+            </div>
+
+            <div>
+                <h3 id="rename-chat-title">
+                    Rename chat
+                </h3>
+
+                <p>
+                    Enter a new name for this conversation.
+                </p>
+            </div>
+
+        </div>
+
+        <input
+            id="rename-chat-input"
+            type="text"
+            maxlength="100"
+            placeholder="Enter chat name"
+            autocomplete="off"
+        >
+
+        <div class="rename-modal-actions">
+
+            <button
+                id="cancel-rename-button"
+                type="button"
+                class="rename-cancel-button"
+            >
+                Cancel
+            </button>
+
+            <button
+                id="save-rename-button"
+                type="button"
+                class="rename-save-button"
+            >
+                Save
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==============================================
+     LOADING OVERLAY
+=============================================== -->
+
+<div
+    class="loading-overlay hidden"
+    id="loading-overlay"
+>
+
+    <div class="loading-spinner"></div>
+
+    <p id="loading-message">
+        Processing...
+    </p>
+
+</div>
+
+<!-- ==============================================
+     TOAST NOTIFICATION
+=============================================== -->
+
+<div
+    class="toast hidden"
+    id="toast"
+    role="status"
+    aria-live="polite"
+></div>
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>

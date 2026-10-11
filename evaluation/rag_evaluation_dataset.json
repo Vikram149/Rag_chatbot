@@ -1,0 +1,89 @@
+[
+    {
+        "id": 1,
+        "question": "What is the Pythagorean theorem?",
+        "question_type": "answerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": [
+            ["right triangle"],
+            ["hypotenuse"],
+            ["sum of the squares", "a² + b²", "a^2 + b^2", "c²", "c^2"]
+        ]
+    },
+    {
+        "id": 2,
+        "question": "A right triangle has sides 6 cm and 8 cm. What is the hypotenuse?",
+        "question_type": "answerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": [
+            ["10 cm", "10"]
+        ]
+    },
+    {
+        "id": 3,
+        "question": "Find the midpoint of the points (2, 4) and (8, 10).",
+        "question_type": "answerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": [
+            ["(5, 7)", "5, 7"]
+        ]
+    },
+    {
+        "id": 4,
+        "question": "Find the distance between the points (1, 2) and (4, 6).",
+        "question_type": "answerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": [
+            ["5 units", "5"]
+        ]
+    },
+    {
+        "id": 5,
+        "question": "Two similar triangles have corresponding sides 7 cm and 21 cm. What is the scale factor?",
+        "question_type": "answerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": [
+            ["3", "three"]
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What are the main mathematics topics covered by this document?",
+        "question_type": "answerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": [
+            ["algebra"],
+            ["geometry"],
+            ["trigonometry"],
+            ["statistics", "probability"]
+        ]
+    },
+    {
+        "id": 7,
+        "question": "What is photosynthesis?",
+        "question_type": "unanswerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": []
+    },
+    {
+        "id": 8,
+        "question": "Who is the current president of the United States?",
+        "question_type": "unanswerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": []
+    },
+    {
+        "id": 9,
+        "question": "Explain how a car engine works.",
+        "question_type": "unanswerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": []
+    },
+    {
+        "id": 10,
+        "question": "What is the capital of Japan?",
+        "question_type": "unanswerable",
+        "document_filename": "Grade_10_Mathematics_RAG_Source.docx",
+        "required_keyword_groups": []
+    }
+]
